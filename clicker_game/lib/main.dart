@@ -52,21 +52,27 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Best Score: $_bestScore',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-            const Spacer(),
-            ElevatedButton(
-              onPressed: _launchGame,
-              child: const Text('Play the game!'),
-            ),
-            
-          ],
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              if (_bestScore > 0) Text(
+                'Best Score: $_bestScore',
+                style: Theme.of(context).textTheme.headlineMedium,
+              )
+              else
+                const Text(
+                  'Click on the button to start the game',
+                ),
+              const Spacer(),
+              ElevatedButton(
+                onPressed: _launchGame,
+                child: const Text('Play the game!'),
+              ),
+              
+            ],
+          ),
         ),
       ),
     );
@@ -123,7 +129,7 @@ class _MyGamePageState extends State<MyGamePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'Nombre de clics: $_counter',
+              'Counter: $_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             ElevatedButton(
