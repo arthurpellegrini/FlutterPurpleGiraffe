@@ -56,14 +56,16 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            ElevatedButton(
-              onPressed: _launchGame,
-              child: const Text('Play the game!'),
-            ),
             Text(
               'Best Score: $_bestScore',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+            const Spacer(),
+            ElevatedButton(
+              onPressed: _launchGame,
+              child: const Text('Play the game!'),
+            ),
+            
           ],
         ),
       ),
