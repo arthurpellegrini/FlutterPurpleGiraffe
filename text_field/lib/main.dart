@@ -32,21 +32,21 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String _player = '';
-  String _bestPlayer = '';
+  String _playername = '';
+  String _bestPlayername = '';
 
-  int _counter = 0;
+  int _score = 0;
   int _bestScore = 0;
 
   bool _isPlaying = false;
 
-  void _onChangedPlayerName(String value) {
-    _player = value;
+  void _onChangedPlayerName(String newPlayername) {
+    _playername = newPlayername;
   }
 
   void _launchGame() async {
     setState(() {
-      _counter = 0;
+      _score = 0;
       _isPlaying = true;
       _startTimer();
     });
@@ -60,16 +60,16 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _incrementCounter() {
     setState(() {
-      _counter++;
+      _score++;
     });
   }
 
   void _finishGame() {
     setState(() {
       _isPlaying = false;
-      if (_counter > _bestScore) {
-        _bestScore = _counter;
-        _bestPlayer = _player;
+      if (_score > _bestScore) {
+        _bestScore = _score;
+        _bestPlayername = _playername;
       }
     });
   }
@@ -100,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 if (!_isPlaying)
                   if (_bestScore > 0)
                     Text(
-                      'Best: $_bestScore - $_bestPlayer',
+                      'Best: $_bestScore - $_bestPlayername',
                       style: Theme.of(context).textTheme.headlineMedium,
                     )
                   else
@@ -117,7 +117,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 // **************** GAME PART ****************
                 if (_isPlaying)
                   Text(
-                    'Counter: $_counter',
+                    'Counter: $_score',
                     style: Theme.of(context).textTheme.headlineMedium,
                   ),
                 if (_isPlaying)
